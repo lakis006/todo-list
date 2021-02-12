@@ -28,7 +28,4 @@ This To-Do list app is designed to track a users To-Do items. A user may create 
 ```
 
 
-## Screenshots
 
-![](./images/screenshot1.png)
-![](./images/screenshot2.png)
