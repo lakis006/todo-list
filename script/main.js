@@ -1,9 +1,12 @@
+//first give some simple functions to buttons
+
 var addButton = document.querySelector("#add-button") 
 console.log(addButton)
 
 addButton.addEventListener("click", addToDoItem); 
 function addToDoItem() {
-    alert("Add button clicked!!!")
+    var itemText = toDoFieldBox.value;
+    newTodoItem(itemText, false)
 }
 
 
@@ -34,3 +37,23 @@ function saveItemsList() {
 }
 
 console.log(saveButton)
+
+// gonna work on the entry box for todo & grab ordered list 
+//creating function that establishes new todo items 
+var toDoFieldBox = document.querySelector("#entry-box4-todo")
+var toDoList = document.querySelector("#list-todos")
+
+function newTodoItem (textItem, completed) {
+    var todoItem = document.createElement("li");
+    var todoText = document.createTextNode(textItem);
+
+    todoItem.appendChild(todoText);
+
+    if (completed) {
+        todoItem.classList.add("completed")
+    }
+
+    toDoList.appendChild(todoItem);
+    todoItem.addEventListener("dblclick", toggleTodoItemState)
+}
+
