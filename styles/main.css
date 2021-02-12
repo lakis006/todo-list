@@ -64,4 +64,37 @@
     text-align: center;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.todo-container #empty-list-btn {
+    background-color: rgb(172, 23, 23);
+}
+
+.todo-container #clear-completed-btn {
+    background-color: royalblue;
+}
+
+.todo-container #save-list-btn {
+    background-color: limegreen;
+}
+
+@media only screen and (min-width: 1400px) {
+    .todo-container {
+        width: 50%;
+    }
+
+    .todo-container input{
+        width: 600px;
+    }
+
+    @media only screen and (min-width: 1399px) and (min-width: 750px) {
+        .todo-container {
+            width: 75%;
+        }
+    
+        .todo-container input{
+            width: 400px;
+        }
+}
 }
