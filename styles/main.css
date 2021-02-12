@@ -1,0 +1,27 @@
+.todo-container {
+    margin-top: 50px;
+    background-color: white;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+.todo-h2 {
+    margin: 0;
+}
+
+.todo-container p {
+    font-style: italic;
+    color: lightslategray;
+    margin: 5px 0;
+}
+
+.todo-container ol {
+    margin: 20px 0;
+}
+
+.todo-container ol li {
+    margin: 5px 0;
+    padding: 3px;
+}

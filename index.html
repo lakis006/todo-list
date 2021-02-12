@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <style>
+        body {
+            background-color: limegreen;
+        }
+    </style>
+    <script src="./script/main.js"></script>
+    <title>Document</title>
+
+</head>
+
+        <!-- maybe put everything inside a container? -->
+
+<body>
+    <!-- put the directions for the about, index, contact in navbar right now but for case study put over header and give nav functionality  -->
+    <header style="background-color: lightslategray;">
+        <nav class="nav">
+            <img src="" alt="">
+            <table>
+                <tr><td><a href="./"><button>Home</button></a></td></tr>
+                <tr><td><a href="./about.html"><button>About</button></a></td></tr>
+                <tr><td><a href="./contact.html"><button>Contact Us</button></a></td></tr>
+            </table>
+        </nav>
+    </header>
+
+     <!-- gonna need that add todo and submission part here -->
+
+    <div class="todo-container" >
+        <h2 class="todo-h2">JSquad To-Do List</h2>
+        <p class="todo-p">When you feel that you are done, double click to mark task completed</p>
+        <form name="adder4-todo">
+            <input type="text" id="entry-box4-todo">
+        </form>
+
+        <!-- make button nice with css  for the add and the control wrapper buttons-->
+        <button id="add-button" class="">Add</button>
+        
+        <br>
+
+        <!-- this is where the list will go but will need some js to make some todos append to list -->
+        <ol class="list-todos"></ol>
+
+        <!-- maybe some some buttons to delete or empty list of todos -->
+        <div class="control-wrapper">
+            <button id="clear-completed-btn" class=""></button>
+            <button id="empty-list-btn" class=""></button>
+            <button id="save-list-btn" class=""></button>
+        </div>
+    </div>
+</body>
+</html>
