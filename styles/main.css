@@ -48,3 +48,20 @@
     font-size: small;
 }
 
+.todo-container .nice-btn:hover{
+    opacity: 0.75;
+}
+
+.todo-container input {
+    padding: 3px 6px;
+}
+
+.todo-container form{
+    display: inline-block;
+}
+
+#btn-control-container {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
