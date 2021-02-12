@@ -47,13 +47,16 @@ function newTodoItem (textItem, completed) {
     var todoItem = document.createElement("li");
     var todoText = document.createTextNode(textItem);
 
+    
     todoItem.appendChild(todoText);
 
     if (completed) {
         todoItem.classList.add("completed")
     }
 
+    console.log(todoItem)
+
     toDoList.appendChild(todoItem);
-    todoItem.addEventListener("dblclick", toggleTodoItemState)
+    
 }
 

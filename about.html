@@ -5,12 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            background-color: limegreen;
+        }
+        tr {
+            padding: 10px;
+            display: inline;
+            margin: auto;
+        }
+
+       #about-cont .pat-img {
+        position: relative;
+        left: 40%;
+        }
+
+        #about-cont .todo-h2 {
+        position: relative;
+        left: 45%;
+        }
+
+
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
+    <header style="background-color: lightslategray;", >
+        <nav class="nav">
             
+            <table style="display: inline-block;" >
+                <tr><td><a href="./index.html"><button>Home</button></a></td></tr>
+                <tr><td><a href=""><button>About</button></a></td></tr>
+                <tr><td><a href="./contact.html"><button>Contact Us</button></a></td></tr>
+            </table>
         </nav>
     </header>
+
+     <!-- gonna need that add todo and submission part here -->
+
+    <div id="about-cont" class="todo-container" >
+        <h2 class="todo-h2">JSquad To-Do List</h2>
+        <img class="pat-img" src="./images/to-do-img.gif" alt="">
+    
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+             sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+        <br>
 </body>
 </html>

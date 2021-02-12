@@ -1,24 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css" />
     <script src="./script/main.js"></script>
-</head>
-<body>
-    <header>
-        <nav>
+    <style>
+      body {
+        background-color: limegreen;
+      }
+      tr {
+        padding: 10px;
+        display: inline;
+        margin: auto;
+      }
 
-        </nav>
+      .form-container {
+        margin-top: 50px;
+        background-color: white;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <header style="background-color: lightslategray" ,>
+      <nav class="nav">
+        <table style="display: inline-block">
+          <tr>
+            <td>
+              <a href="./index.html"><button>Home</button></a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="./about.html"><button>About</button></a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href=""><button>Contact Us</button></a>
+            </td>
+          </tr>
+        </table>
+      </nav>
     </header>
 
-    <div class="form-container">
-        <form action="">
+    <br />
 
-        </form>
+    <div class="form-container">
+      <form action="/action_page.php">
+        <label for="fname">First name:</label><br />
+        <input type="text" id="fname" name="fname" value="John" /><br />
+        <br />
+        <label for="lname">Last name:</label><br />
+        <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
+        <label for="email">Email: </label><br />
+        <input type="email" id="email" name="email" value="email" /><br /><br />
+
+        <label for="recipient">Recipient:</label> <br />
+        <select id="recipients" name="recipients" size="3">
+          <option value="outside-business">Business (non client)</option>
+          <option value="client">Business (Client)</option>
+          <option value="individual">Individual</option>
+          <option value="employee">Employee</option>
+        </select>
+        <input type="submit" value="Submit" />
+        <input type="reset" />
+      </form>
     </div>
-</body>
+  </body>
 </html>
