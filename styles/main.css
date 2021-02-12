@@ -24,4 +24,27 @@
 .todo-container ol li {
     margin: 5px 0;
     padding: 3px;
+    
 }
+
+.todo-container ol li:nth-child(even) {
+    background: white;
+}
+
+.todo-container .completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.todo-container .nice-btn {
+    margin: 10px 2px;
+    padding: 5px 20px;
+    border-radius: 15px;
+    background-color: royalblue;
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: small;
+}
+
