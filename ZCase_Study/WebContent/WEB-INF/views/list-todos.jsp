@@ -29,7 +29,8 @@
 	</table>
 	
 	<div>
-		<a class="button" href="/add-todo"> Add A Todo</a>
+		
+		<button type="button" class="btn btn-light btn-lg btn-block"><a href="/add-todo"> Add A Todo</a></button>
 	</div>
 	
 </div>

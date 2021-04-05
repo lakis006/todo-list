@@ -1,18 +1,24 @@
-       
-        <nav role="navigation" class="navbar navbar-default">
-         <div class="">
-         	
-         </div>
-         
-         <div class="navbar-collapse">
-         	<ul class="nav navbar-nav">
-         		<li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
-         		<li><a href="/list-todos">Todos</a>
-         	</ul>
-         	
-         	<ul class="nav navbar-nav navbar-right">
-         		<li><a href="/logout">Logout</a></li>
-         	</ul>
-         	
-         </div>
-        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" >
+        <a class="nav-link" href="${pageContext.request.contextPath}/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Todos</a>
+      </li>
+	
+    </ul>
+    
+
+  </div>
+  
+  <div>
+         <ul class="nav navbar-nav float-md-right">
+      <a href="/logout">Logout</a>
+    </ul>
+  </div>
+</nav>
+        
