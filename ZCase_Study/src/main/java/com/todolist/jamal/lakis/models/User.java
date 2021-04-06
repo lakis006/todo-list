@@ -1,5 +1,6 @@
 package com.todolist.jamal.lakis.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -39,8 +40,8 @@ public class User {
 	@OneToOne
 	private TodoList todolist;
 	
-	@OneToOne
-	private UserRole role;
+	
+	private String role;
 	
 	@Override
 	public String toString() {
@@ -49,11 +50,11 @@ public class User {
 	}
 
 	
-	public UserRole getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(UserRole role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
@@ -63,10 +64,12 @@ public class User {
 
 	public User() {
 		super();
+		this.todolist = new TodoList();
+		this.role = "user";
 	
 	}
 	
-	public User(UserRole role) {
+	public User(String role) {
 		this.role = role;
 	
 	}

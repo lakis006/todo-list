@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.todolist.jamal.lakis.models.TodoList;
 
-public interface TodoRepository extends CrudRepository<TodoList, Integer>{
+public interface TodoListRepository extends CrudRepository<TodoList, Integer>{
 //	List <TodoList> findUserName(String user);
 }

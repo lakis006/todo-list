@@ -41,16 +41,19 @@ public class TodoList {
 	}
 	
 	
-
-
+	public void addTasks(TodoTask task) {
+		this.tasks.add(task);
+	}
+	
 	
 	
 	public TodoList() {
 		super();
+		this.tasks = new ArrayList<>();
 	}
 
 	public TodoList(Integer id) {
-		this.tasks = new ArrayList<>();
+		this();
 		this.id = id;
 	}
 

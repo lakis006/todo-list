@@ -33,17 +33,8 @@ public class HomeController {
 		}
 		return "redirect:/login";
 	}
-	
-	@GetMapping("/about")
-	public String showAboutPage() {
-		return "about";
-	}
-	
-	@GetMapping("/contact")
-	public String showContactPage() {
-		return "contact";
-	}
-	
+
+
 	@GetMapping("/saveHardCodedUser")
 	public String saveHardCodedUser() {
 		User u = new User("testuser1", "jsquad@aol.com", "pass1");
