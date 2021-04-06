@@ -5,8 +5,11 @@ import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.todolist.jamal.lakis.models.TodoTask;
 
+@Service
 public class TodoListService {
 	private static List<TodoTask> todos = new ArrayList<TodoTask>();
 	private static int todoCount = 0;

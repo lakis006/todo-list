@@ -21,37 +21,39 @@ import javax.validation.constraints.Size;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userId;
+	private Integer id;
 	
-	@Column(length=50, nullable=false, unique=true, name="name")
+	@Column(length=50, name="name")
 	@Size(min = 2, max = 25)
 	private String username;
 	
-	@Column(length=50, nullable=false, unique=true, name="email")
+	@Column(length=50, name="email")
 	@Email
 	@NotEmpty(message="Email can't be empty")
 	private String email;
 
-	@Column(length=50, nullable=false, unique=true, name="password")
+	@Column(length=50, name="password")
 	@NotEmpty(message="Password can't be empty")
 	private String password;
 	
-
-	@JoinColumn(name = "adminId")
-	private String role;
+	@OneToOne
+	private TodoList todolist;
+	
+	@OneToOne
+	private UserRole role;
 	
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", email=" + email + ", password=" + password
+		return "User [userId=" + id + ", username=" + username + ", email=" + email + ", password=" + password
 				+ ", role=" + role;
 	}
 
 	
-	public String getRole() {
+	public UserRole getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(UserRole role) {
 		this.role = role;
 	}
 
@@ -61,8 +63,14 @@ public class User {
 
 	public User() {
 		super();
-		this.role = "user";
+	
 	}
+	
+	public User(UserRole role) {
+		this.role = role;
+	
+	}
+
 
 	public User(String username, String email, String password) {
 		this();
@@ -72,11 +80,11 @@ public class User {
 	}
 
 	public Integer getUserId() {
-		return userId;
+		return id;
 	}
 
 	public void setUserId(Integer userId) {
-		this.userId = userId;
+		this.id = userId;
 	}
 
 	public String getUsername() {

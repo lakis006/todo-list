@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,8 +27,11 @@ public class HomeController {
 	}
 
 	@GetMapping("/") //method handling a get request which returns the index page 
-	public String showIndexPage() {
-		return "list-todos";
+	public String showIndexPage(HttpSession session) {
+		if(session.getAttribute("currentUser") != null) {
+			return "welcome";
+		}
+		return "redirect:/login";
 	}
 	
 	@GetMapping("/about")
@@ -44,7 +48,7 @@ public class HomeController {
 	public String saveHardCodedUser() {
 		User u = new User("testuser1", "jsquad@aol.com", "pass1");
 		userService.saveUser(u);
-		return "index";
+		return "login";
 	}
 	
 	@GetMapping("/admin")
@@ -83,7 +87,7 @@ public class HomeController {
 		if (user != null  && password.equals(user.getPassword())) {
 			session.setAttribute("currentUser", user);
 			System.out.println("Login Succeeded");
-			return "welcome";
+			return "redirect:/";
 		} else 
 			
 		model.addAttribute("loginFailedMessage", "Login Invalid");

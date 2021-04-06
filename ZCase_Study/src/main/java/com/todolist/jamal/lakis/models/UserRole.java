@@ -6,22 +6,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "todotasks")
-public class Admin {
+@Table(name = "UserRole")
+public class UserRole {
 	@Id
-	@Column(length=50, nullable=false, unique=true, name="adminId")
+	@Column(length=50, unique=true)
 	private int id;
-	@Column(length=50, nullable=false, name="aName")
-	private String aName;
+	@Column(length=50, nullable=false)
+	private String role;
 	
-	public Admin() {
+	public UserRole() {
 		super();
 	}
 	
-	public Admin(int id, String aName) {
+	public UserRole(int id, String role) {
 		super();
 		this.id = id;
-		this.aName = aName;
+		this.role = role;
 	}
 	
 	public int getId() {
@@ -31,10 +31,10 @@ public class Admin {
 		this.id = id;
 	}
 	public String getaName() {
-		return aName;
+		return role;
 	}
-	public void setaName(String aName) {
-		this.aName = aName;
+	public void setaName(String role) {
+		this.role = role;
 	}
 
 }

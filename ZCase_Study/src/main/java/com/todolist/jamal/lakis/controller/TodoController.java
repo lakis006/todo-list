@@ -3,12 +3,14 @@ package com.todolist.jamal.lakis.controller;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,8 +20,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todolist.jamal.lakis.models.TodoTask;
+import com.todolist.jamal.lakis.models.User;
 import com.todolist.jamal.lakis.service.TodoListService;
 
+@Controller
 public class TodoController {
 	@Autowired
 	private TodoListService service;
@@ -31,11 +35,12 @@ public class TodoController {
 	}
 	
 	@GetMapping("/list-todos")
-	public String showTodosList(ModelMap model) {
-		String user = getLoggedInUserName();
+	public String showTodosList(ModelMap model, HttpSession session) {
+		String user = ((User) session.getAttribute("currentUser")).getUsername(); // getLoggedInUserName();
 		model.addAttribute("todos", service.getTodos(user));
 		return "list-todos";
 	}
+	
 	private String getLoggedInUserName() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails) {
@@ -46,8 +51,14 @@ public class TodoController {
 	
 	@GetMapping("/add-todo")
 	public String showAddTodoPage(ModelMap model) {
-		model.addAttribute("todo", new TodoTask(0,  "Default Task Name","Default Task Desc", new Date(0), false));
-		return "todo";
+		model.addAttribute("todo", 
+				new TodoTask(
+						0,  "Default Task Name","Default Task Desc", 
+						new Date(0), false
+				)
+		);
+		
+		return "add-todo";
 	}
 	
 	@GetMapping("/delete-todo")
@@ -69,7 +80,7 @@ public class TodoController {
 	@PostMapping("/add-todo")
 	public String addTodo(ModelMap model, @Valid TodoTask todo, BindingResult result) {
 		if(result.hasErrors()) {
-			return "todo";
+			return "list-todos";
 		}
 		service.addTodo(todo.gettName(), todo.gettDesc(), todo.getDoneDate(),  false);
 		return "redirect:/list-todos";
