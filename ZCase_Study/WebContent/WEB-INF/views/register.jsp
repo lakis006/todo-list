@@ -56,8 +56,8 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<form:input class="btn btn-primary submit-btn btn-block" type="submit"
-								path="register" value="Register"/>
+							<input class="btn btn-primary submit-btn btn-block" type="submit"
+								 value="Register"/>
 						</div>
 					</form:form>
 				</div>

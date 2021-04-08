@@ -3,6 +3,7 @@ package com.todolist.jamal.lakis.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +17,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "users")
@@ -37,10 +40,29 @@ public class User {
 	@NotEmpty(message="Password can't be empty")
 	private String password;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private TodoList todolist;
 	
 	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public TodoList getTodolist() {
+		return todolist;
+	}
+
+
+	public void setTodolist(TodoList todolist) {
+		this.todolist = todolist;
+	}
+
 	private String role;
 	
 	@Override

@@ -44,6 +44,7 @@ public class TodoController {
 	public String showTodosList(ModelMap model, HttpSession session) {
 		String user = ((User) session.getAttribute("currentUser")).getUsername(); // getLoggedInUserName();
 		List<TodoTask> list = service.getTodos(user);
+		System.out.println("list size: " + list.size());
 		model.addAttribute("todos", list);
 		System.out.println("Returned todos successfully");
 		return "list-todos";
@@ -88,7 +89,9 @@ public class TodoController {
 		}
 		
 		service.addTodo(user, todo.gettName(), todo.gettDesc(), todo.getDoneDate(),  false);
-		return "redirect:/list-todos";
+		List<TodoTask> list = service.getTodos(user);
+		model.addAttribute("todos", list);
+		return "list-todos";
 	}
 	
 }

@@ -14,16 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todolist.jamal.lakis.models.User;
+import com.todolist.jamal.lakis.service.TodoListService;
 import com.todolist.jamal.lakis.service.UserService;
 
 @Controller
 public class HomeController {
 	private UserService userService;
+	private TodoListService todoListService;
 	
 	@Autowired
-	public HomeController(UserService userService) {
+	public HomeController(UserService userService, TodoListService todoListService) {
 		super();
 		this.userService = userService;
+		this.todoListService = todoListService;
 	}
 
 	@GetMapping("/") //method handling a get request which returns the index page 
@@ -60,7 +63,7 @@ public class HomeController {
 			return "register";
 		}
 		user.setPassword(user.getPassword()); //encrypt password in user.getPassword()
-		userService.saveUser(user);
+		User returnedUser = userService.saveUser(user);
 		return "redirect:/login";
 	}
 	
