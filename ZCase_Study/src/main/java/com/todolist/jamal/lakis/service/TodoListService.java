@@ -5,50 +5,35 @@ import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.todolist.jamal.lakis.models.TodoList;
 import com.todolist.jamal.lakis.models.TodoTask;
+import com.todolist.jamal.lakis.models.User;
+import com.todolist.jamal.lakis.repository.TodoListRepository;
 
 @Service
 public class TodoListService {
-	private static List<TodoTask> todos = new ArrayList<TodoTask>();
-	private static int todoCount = 0;
+	@Autowired
+	TodoListRepository repo;
 	
-	public List<TodoTask> getTodos(String user) {
-		List<TodoTask> filteredTodos = new ArrayList<TodoTask>();
-		for(TodoTask todo: todos) {
-			if(todo.getUserName().equals(user))
-				filteredTodos.add(todo); 
-		}
-		return filteredTodos;
-	}
+
 	
-	
-	public TodoTask getSingleTodo(int id) {
-		for (TodoTask todo: todos) {
-			if (todo.getId() == id)
-				return todo;
-		}
+	public TodoList getTodoList(int id) {
+		Integer user = new User().getUserId();
+		TodoList list = new TodoList();
+			if(list.getUser().getUserId().equals(user)) {
+				return this.getTodoList(id);
+			}
 		return null;
 	}
 	
-	public void updateTodo(TodoTask todo) {
-		todos.remove(todo);
-		todos.add(todo);
+
+	
+	
+	public void addTodoList( int userId) {
+		repo.save(new TodoList(userId));
 	}
 	
-	public void addTodo( String tName,  String tDesc, Date doneDate, boolean isDone) {
-		todos.add(new TodoTask(++todoCount, tName, tDesc, doneDate, isDone));
-	}
-	
-	public void deleteTodo(int id) {
-		Iterator<TodoTask> iterator = todos.iterator();
-		
-		while(iterator.hasNext()) {
-			TodoTask todo = iterator.next();
-			if (todo.getId() == id) {
-				iterator.remove();
-			}
-		}
-	}
 }

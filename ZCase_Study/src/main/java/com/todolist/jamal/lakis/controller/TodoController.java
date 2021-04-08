@@ -1,7 +1,8 @@
 package com.todolist.jamal.lakis.controller;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -19,41 +20,39 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.todolist.jamal.lakis.models.TodoList;
 import com.todolist.jamal.lakis.models.TodoTask;
 import com.todolist.jamal.lakis.models.User;
 import com.todolist.jamal.lakis.service.TodoListService;
+import com.todolist.jamal.lakis.service.TodoTaskService;
 
 @Controller
 public class TodoController {
 	@Autowired
-	private TodoListService service;
+	private TodoTaskService service;
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 	
 	@GetMapping("/list-todos")
 	public String showTodosList(ModelMap model, HttpSession session) {
 		String user = ((User) session.getAttribute("currentUser")).getUsername(); // getLoggedInUserName();
-		model.addAttribute("todos", service.getTodos(user));
+		List<TodoTask> list = service.getTodos(user);
+		model.addAttribute("todos", list);
+		System.out.println("Returned todos successfully");
 		return "list-todos";
 	}
 	
-	private String getLoggedInUserName() {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails) {
-			return ((UserDetails) principal).getUsername();
-		}
-		return principal.toString();
-	}
+
 	
 	@GetMapping("/add-todo")
 	public String showAddTodoPage(ModelMap model) {
 		model.addAttribute("todo", 
 				new TodoTask(
-						0,  "Default Task Name","Default Task Desc", 
+						0,  "testUser1","Default Task Name","Default Task Desc", 
 						new Date(0), false
 				)
 		);
@@ -61,28 +60,31 @@ public class TodoController {
 		return "add-todo";
 	}
 	
-	@GetMapping("/delete-todo")
-	public String deleteTodo(ModelMap model, @RequestParam int id)  {
-		service.deleteTodo(id);
-		return "redirect:/list-todos";
-	}
+//	@GetMapping("/delete-todo")
+//	public String deleteTodo(ModelMap model, @RequestParam int id)  {
+//		service.deleteTodo(id);
+//		return "redirect:/list-todos";
+//	}
 	
 	@GetMapping("/update-todo") 
 	public String showUpdateTodoPage(ModelMap model, @Valid TodoTask todo, BindingResult result) {
 		if (result.hasErrors()) {
-			return "todo";
+			return "list-todos";
 		}
-		todo.setUserName(getLoggedInUserName());
+		
 		service.updateTodo(todo);
 		return "redirect:/list-todos";
 	}
 	
 	@PostMapping("/add-todo")
-	public String addTodo(ModelMap model, @Valid TodoTask todo, BindingResult result) {
+	public String addTodo(ModelMap model, @Valid TodoTask todo, BindingResult result, HttpSession session) {
+		String user = ((User) session.getAttribute("currentUser")).getUsername();
+		
 		if(result.hasErrors()) {
 			return "list-todos";
 		}
-		service.addTodo(todo.gettName(), todo.gettDesc(), todo.getDoneDate(),  false);
+		
+		service.addTodo(user, todo.gettName(), todo.gettDesc(), todo.getDoneDate(),  false);
 		return "redirect:/list-todos";
 	}
 	
