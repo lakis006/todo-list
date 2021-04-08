@@ -12,14 +12,18 @@
 <title>Login Page</title>
 
 <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
-    rel="stylesheet">
+	rel="stylesheet">
 
 <link
-    href="webjars/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css"
-    rel="stylesheet" />
-    	<spring:url value="/resources/css/style.css" var="mainCss"/>
-	<link href="${mainCss}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	href="webjars/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css"
+	rel="stylesheet" />
+<spring:url value="/resources/css/style.css" var="mainCss" />
+<link href="${mainCss}" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
 
 </head>
 <body bgcolor="red">
@@ -60,13 +64,11 @@
                   </div>
                 </form>
               </div>
-
-              <p class="footer-text text-center">copyright © 2021 Minn-Things. All rights reserved.</p>
-        
             </div>
+           
           </div>
         </div>
 	
-
+<%@include file="footer.jsp" %>
 </body>
 </html>

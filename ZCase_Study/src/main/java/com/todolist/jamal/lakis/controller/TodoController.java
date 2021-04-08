@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.todolist.jamal.lakis.models.TodoList;
 import com.todolist.jamal.lakis.models.TodoTask;
 import com.todolist.jamal.lakis.models.User;
+import com.todolist.jamal.lakis.repository.TodoTaskRepository;
 import com.todolist.jamal.lakis.service.TodoListService;
 import com.todolist.jamal.lakis.service.TodoTaskService;
 
@@ -30,6 +31,8 @@ import com.todolist.jamal.lakis.service.TodoTaskService;
 public class TodoController {
 	@Autowired
 	private TodoTaskService service;
+	
+	private TodoTaskRepository repo;
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {

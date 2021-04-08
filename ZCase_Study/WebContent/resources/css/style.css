@@ -1,29 +1,41 @@
 @charset "ISO-8859-1";
+
+   
+
+
        
 .logout {
 	float: right;
 }
 
-  <!-- header.masthead { 
-   	text-align: center;
-    color: #fff;
-    background-image: url(../resources/images/mast-pic.png);
+nav {
+	padding-bottom: 15%;
+}
+
+body {
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%);
+	   background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-position: center center;
     background-size: cover;
-   } -->
+}
    
    
    .masthead {
     position: relative;
     width: 100%;
+    color: white;
     height: auto;
     min-height: 35rem;
     padding: 15rem 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url(images/mast-pic.png);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url(../images/mast-pic.png);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
+   }
+
+.blurg {
+	margin-top: 10%;
+	padding: 4%;
 }

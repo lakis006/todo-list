@@ -6,6 +6,18 @@
 <html>
 
 <head>
+
+<style>
+    { margin: 0; padding: 0; }
+
+    html { 
+        
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
 <title>Todo-List</title>
 <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
     rel="stylesheet">
@@ -19,4 +31,4 @@
 	<link href="${mainCss}" rel="stylesheet">
 </head>
 
-<body>
+<body class="mainBod">
