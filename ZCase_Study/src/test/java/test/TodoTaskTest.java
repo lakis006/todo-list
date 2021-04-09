@@ -31,12 +31,29 @@ public class TodoTaskTest {
 	}
 
 	@Test
-	public void testValidateStudent() { //test that passed using a student that is inside database 
+	public void testGetOneTodo() { //test that passed using a student that is inside database 
 		System.out.println("Testing Validation");
-		assertEquals(true, eDao.validateStudent("cstartin3@flickr.com", "XYHzJ1S"));
-		assertEquals(false, eDao.validateStudent("notaperson@balrg.com", "isuegdfa"));
+		assertEquals(true, eDao.findbyId(2));
+		assertEquals(false, eDao.findbyId(0));
 	}
 
+	
+	@Test
+	public void testGetAllTodos() { //test that passed using a student that is inside database 
+		System.out.println("Testing Validation");
+		assertEquals(true, eDao.getTodos("cstartin3@flickr.com"));
+		assertEquals(false, eDao.getTodos("notaperson@balrg.com"));
+	}
+	
+	
+	@Test
+	public void testAddTodo() { //test that passed using a student that is inside database 
+		System.out.println("Testing Validation");
+		assertEquals(true, eDao.getTodos("cstartin3@flickr.com"));
+		assertEquals(false, eDao.getTodos("notaperson@balrg.com"));
+	}
+	
+	
 
 
 
