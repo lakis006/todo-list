@@ -39,8 +39,6 @@ This To-Do list app is designed to track a users To-Do items. A user may create 
 
 * As a user, I would like to add the ability to prioritize tasks via deadline
 
-* As an Admin user, I would like to view all users in the database 
-
 
 ## Challenges 
 * Controller Mapping 
