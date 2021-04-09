@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,6 +34,7 @@ public class TodoController {
 	private TodoTaskService service;
 	
 	private TodoTaskRepository repo;
+	
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -57,41 +59,67 @@ public class TodoController {
 		model.addAttribute("todo", 
 				new TodoTask(
 						0,  "testUser1","Default Task Name","Default Task Desc", 
-						new Date(0), false
+						"insert Date", false
 				)
 		);
 		
 		return "add-todo";
 	}
 	
-//	@GetMapping("/delete-todo")
-//	public String deleteTodo(ModelMap model, @RequestParam int id)  {
-//		service.deleteTodo(id);
-//		return "redirect:/list-todos";
-//	}
-	
-	@GetMapping("/update-todo") 
-	public String showUpdateTodoPage(ModelMap model, @Valid TodoTask todo, BindingResult result) {
-		if (result.hasErrors()) {
-			return "list-todos";
-		}
+	@GetMapping("/delete-todo")
+	public String deleteTodo(ModelMap model, @Valid @ModelAttribute("todo") TodoTask todo, BindingResult result, HttpSession session)  {
+		String user = ((User) session.getAttribute("currentUser")).getUsername();
 		
-		service.updateTodo(todo);
+		service.deleteById(todo.getId());
+		
 		return "redirect:/list-todos";
 	}
 	
-	@PostMapping("/add-todo")
-	public String addTodo(ModelMap model, @Valid TodoTask todo, BindingResult result, HttpSession session) {
-		String user = ((User) session.getAttribute("currentUser")).getUsername();
+	
+	
+	@GetMapping("/update-todo") 
+	public String showUpdateTodoPage(@RequestParam("id") Integer id, ModelMap model) {
+		
+		model.addAttribute("updateTodo", service.findbyId(id));
+		
+		return "update";
+	}
+	
+	
+	@PostMapping("/update")
+	public String processUpdate(ModelMap model, @Valid TodoTask todo, BindingResult result, HttpSession session) {
+		User user = ((User) session.getAttribute("currentUser"));
 		
 		if(result.hasErrors()) {
+			
+			result.getFieldErrors().forEach(f -> 
+			System.out.println(f.getField() + ": " + f.getDefaultMessage()));
+			System.out.println("Add todo doesnt work");
+			return "list-todos";
+		}
+	service.deleteById(todo.getId());
+	service.addTodo(user.getUsername(), user.getTodolist(), todo.gettName(), todo.gettDesc(), todo.getDoneDate(),  false);
+	return "redirect:/list-todos";
+	}
+	
+	
+	@PostMapping("/addtodo")
+	public String addTodo(ModelMap model, @Valid TodoTask todo, BindingResult result, HttpSession session) {
+		User user = ((User) session.getAttribute("currentUser"));
+		
+		if(result.hasErrors()) {
+			
+			result.getFieldErrors().forEach(f -> 
+			System.out.println(f.getField() + ": " + f.getDefaultMessage()));
+			System.out.println("Add todo doesnt work");
 			return "list-todos";
 		}
 		
-		service.addTodo(user, todo.gettName(), todo.gettDesc(), todo.getDoneDate(),  false);
-		List<TodoTask> list = service.getTodos(user);
-		model.addAttribute("todos", list);
-		return "list-todos";
+		service.addTodo(user.getUsername(), user.getTodolist(), todo.gettName(), todo.gettDesc(), todo.getDoneDate(),  false);
+		System.out.println("Add todo works");
+		List<TodoTask> list = service.getTodos(user.getUsername());
+		model.addAttribute("todo", list);
+		return "redirect:/list-todos";
 	}
 	
 }

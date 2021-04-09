@@ -19,7 +19,7 @@
 				<tr>
 				<td>${todo.tName}</td>
 				<td>${todo.tDesc}</td>
-				<td><fmt:formatDate value="${todo.doneDate}" pattern="dd/MM/yyyy" /></td>
+				<td>"${todo.doneDate}</td>
 				<td>${todo.isComplete}</td>
 				<td><a type="button" class="btn btn-success" href="update-todo?id=${todo.id}">Update</a></td>
 				<td><a type="button" class="btn btn-warning" href="delete-todo?id=${todo.id}">Delete</a></td>

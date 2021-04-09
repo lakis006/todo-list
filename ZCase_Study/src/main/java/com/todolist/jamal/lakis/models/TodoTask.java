@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,15 +30,6 @@ public class TodoTask {
 		@ManyToOne
 	    @JoinColumn(name="listId", nullable=false)
 		private TodoList tList;
-		
-		public TodoList gettList() {
-			return tList;
-		}
-
-		public void settList(TodoList tList) {
-			this.tList = tList;
-		}
-
 
 		private String userName;
 		
@@ -46,9 +38,7 @@ public class TodoTask {
 		@Size(min = 10, message = "Enter at least 8 characters...")
 		private String tDesc;
 		
-		@DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "MM/dd/yyyy")
-		@Temporal(value = TemporalType.TIMESTAMP)
-		private Date doneDate;
+		private String doneDate;
 		
 		private boolean isComplete;
 
@@ -56,7 +46,17 @@ public class TodoTask {
 			super();
 		}
 
-		public TodoTask(Integer id, String userName, String tName, String tDesc, Date doneDate, boolean isComplete) {
+		public TodoTask(Integer id, TodoList tList, String userName, String tName, String tDesc, String doneDate, boolean isComplete) {
+			super();
+			this.id = id;
+			this.userName = userName;
+			this.tList = tList;
+			this.tName = tName;
+			this.tDesc = tDesc;
+			this.doneDate = doneDate;
+			this.isComplete = isComplete;
+		}
+		public TodoTask(Integer id, String userName, String tName, String tDesc, String doneDate, boolean isComplete) {
 			super();
 			this.id = id;
 			this.userName = userName;
@@ -65,6 +65,7 @@ public class TodoTask {
 			this.doneDate = doneDate;
 			this.isComplete = isComplete;
 		}
+
 		public boolean isComplete() {
 			return isComplete;
 		}
@@ -117,13 +118,30 @@ public class TodoTask {
 		}
 
 
-		public Date getDoneDate() {
+		public String getDoneDate() {
 			return doneDate;
 		}
 
 
-		public void setDoneDate(Date doneDate) {
+		public void setDoneDate(String doneDate) {
 			this.doneDate = doneDate;
+		}
+		
+		public TodoList gettList() {
+			return tList;
+		}
+
+		public void settList(TodoList tList) {
+			this.tList = tList;
+		}
+
+		public void addAll(@Valid TodoTask todo) {
+			// TODO Auto-generated method stub
+			todo.gettName();
+			todo.gettDesc();
+			todo.getDoneDate();
+			
+			
 		}
 
 

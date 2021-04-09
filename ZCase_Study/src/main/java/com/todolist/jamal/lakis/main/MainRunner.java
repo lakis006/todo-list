@@ -18,10 +18,10 @@ public class MainRunner {
 
 		em.getTransaction().begin();
 		
-		TodoTaskService ss = new TodoTaskService();
+//		TodoTaskService ss = new TodoTaskService();
 		TodoListService cs = new TodoListService();
 
-		ss.getTodos("testuser1").forEach(System.out::println);;
+//		ss.getTodos("testuser1").forEach(System.out::println);;
 //		cs.getAllCourses().forEach(System.out::println);
 //		ss.getStudentByEmail("sbowden1@yellowbook.com");
 //		ss.validateStudent("cjaulme9@bing.com", "FnVklVgC6r6");

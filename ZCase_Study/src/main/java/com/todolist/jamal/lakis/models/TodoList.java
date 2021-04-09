@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +23,7 @@ public class TodoList {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //study generation type auto 
 	private Integer id;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
 	@OneToMany(targetEntity = TodoTask.class, fetch=FetchType.EAGER)
