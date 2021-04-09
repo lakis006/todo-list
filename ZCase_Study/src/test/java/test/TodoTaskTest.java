@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.todolist.jamal.lakis.models.User;
 import com.todolist.jamal.lakis.service.TodoTaskService;
 
 
@@ -17,7 +19,7 @@ public class TodoTaskTest {
 		
 	}
 	
-
+	
 
 	@BeforeClass
 	public static void setUp() {
@@ -32,7 +34,10 @@ public class TodoTaskTest {
 
 	@Test
 	public void testGetOneTodo() { //test that passed using a student that is inside database 
-		System.out.println("Testing Validation");
+		System.out.println("Testing one todo");
+		User user = new User();
+		
+		
 		assertEquals(true, eDao.findbyId(2));
 		assertEquals(false, eDao.findbyId(0));
 	}
@@ -40,7 +45,7 @@ public class TodoTaskTest {
 	
 	@Test
 	public void testGetAllTodos() { //test that passed using a student that is inside database 
-		System.out.println("Testing Validation");
+		System.out.println("Testing get all todos");
 		assertEquals(true, eDao.getTodos("cstartin3@flickr.com"));
 		assertEquals(false, eDao.getTodos("notaperson@balrg.com"));
 	}
@@ -48,7 +53,7 @@ public class TodoTaskTest {
 	
 	@Test
 	public void testAddTodo() { //test that passed using a student that is inside database 
-		System.out.println("Testing Validation");
+		System.out.println("Testing add todo");
 		assertEquals(true, eDao.getTodos("cstartin3@flickr.com"));
 		assertEquals(false, eDao.getTodos("notaperson@balrg.com"));
 	}

@@ -44,6 +44,9 @@ public class UserTest {
 	@Test
 	public void findUserByUsername() { //test that passed using a student that is inside database 
 		System.out.println("Testing Validation");
+		User user = new User();
+				
+		
 		assertEquals(true, eDao.findUserByUsername("jamal"));
 		assertEquals(false, eDao.findUserByUsername("notaperson@balrg.com"));
 	}

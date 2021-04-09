@@ -30,10 +30,10 @@ public class UserRole {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getaName() {
+	public String getRole() {
 		return role;
 	}
-	public void setaName(String role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
