@@ -1,4 +1,4 @@
-# To Do List
+# Minne-Things To-Do List
 
 The To Do List  enables the user to register and succesfully login to their account in which they can create todo-tasks for their own unique todo-list.
 
