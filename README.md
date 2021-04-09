@@ -10,6 +10,7 @@ The To Do List  enables the user to register and succesfully login to their acco
 * Spring MVC
 * SQL
 * JPA
+* JUnit testing
 * Tomcat Server
 
 ## Table of Contents 
