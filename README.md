@@ -6,7 +6,7 @@ The To Do List  enables the user to register and succesfully login to their acco
 
 * HTML
 * CSS 
-* Java
+* Core Java
 * Spring MVC
 * SQL
 * JPA
