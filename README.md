@@ -54,10 +54,11 @@ This To-Do list app is designed to track a users To-Do items. A user may create 
 
 
 ## Future-Development  
-* Controller Mapping 
-* Database Persistence
-* Model Constraints
-* Generating listid with User and Task
+* Turn into a project management app
+* Admin crud operations with user, as well as user todos
+* Add a search todo function (maybe if list grows to big)
+* Set a To-don't list to ensure todos get completed prior
+* Give a dynamic list of things to do in minnesota that changes every season 
 
 
 ## Installation 
