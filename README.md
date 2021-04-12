@@ -63,7 +63,7 @@ This To-Do list app is designed to track a users To-Do items. A user may create 
 ## Installation 
 
 * Clone the repository to your local device 
-* Create Database using the .sql script in the resources folder 
+* Create Database using the .sql script in the WebContents/resources folder 
 * Install Dependencies
 * Run On Server 
 
